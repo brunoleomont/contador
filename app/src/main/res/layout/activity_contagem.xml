@@ -1,0 +1,66 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.monteiro.leonardo.bruno.contador.ContagemActivity"
+    >
+
+    <!--<TextView
+        android:hint="@string/app_nome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView"
+        android:textSize="30sp"
+        android:textAlignment="center"
+        android:layout_marginTop="15dp"/>-->
+
+    <ProgressBar
+        android:id="@+id/login_progress"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:visibility="gone" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+    <TextView
+        android:text="0"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtView_contagem"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        android:layout_marginTop="20dp"/>
+
+    <Button
+        android:hint="@string/btn_contar"
+        android:layout_width="match_parent"
+        android:layout_height="390px"
+        android:id="@+id/btn_contar"
+        android:textSize="56sp"
+        android:layout_marginTop="35dp"/>
+
+    <Button
+        android:hint="@string/btn_salvar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_salvar"
+        android:textSize="20sp"
+        android:layout_marginTop="55dp"/>
+    </LinearLayout>
+    </ScrollView>
+</LinearLayout>

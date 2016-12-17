@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.monteiro.leonardo.bruno.contador">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".LoginActivity"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ContagemActivity"
+            android:label="@string/app_name"
+            android:parentActivityName="com.monteiro.leonardo.bruno.contador.LoginActivity">
+        </activity>
+        <activity
+            android:name=".EnviarActivity"
+            android:label="@string/app_name"
+            android:parentActivityName="com.monteiro.leonardo.bruno.contador.ContagemActivity">
+        </activity>
+        <activity
+            android:name=".ConfirmacaoActivity"
+            android:label="@string/app_name"
+            android:parentActivityName="com.monteiro.leonardo.bruno.contador.EnviarActivity">
+        </activity>
+    </application>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+</manifest>

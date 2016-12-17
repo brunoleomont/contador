@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Contador</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Senha</string>
+    <string name="action_sign_in">Entrar</string>
+    <string name="action_sign_in_short">Entrar</string>
+    <string name="error_invalid_email">Email inválido</string>
+    <string name="error_invalid_password">Senha muito curta</string>
+    <string name="error_incorrect_password">Senha incorreta</string>
+    <string name="error_field_required">Campo obrigatório</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+    <!-- Strings related to CONTAGEM -->
+    <string name="app_nome">CONTADOR</string>
+    <string name="btn_contar">+1</string>
+    <string name="btn_salvar">Salvar</string>
+    <string name="btn_enviar">Enviar</string>
+    <string name="btn_contar_novamente">Contar novamente</string>
+</resources>
