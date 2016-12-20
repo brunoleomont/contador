@@ -44,7 +44,8 @@
         android:id="@+id/txtView_contagem"
         android:textAlignment="center"
         android:textSize="30sp"
-        android:layout_marginTop="20dp"/>
+        android:layout_marginTop="20dp"
+        android:textColor="@android:color/black" />
 
     <Button
         android:hint="@string/btn_contar"
@@ -52,7 +53,8 @@
         android:layout_height="390px"
         android:id="@+id/btn_contar"
         android:textSize="56sp"
-        android:layout_marginTop="35dp"/>
+        android:layout_marginTop="35dp"
+        android:textColor="@android:color/black" />
 
     <Button
         android:hint="@string/btn_salvar"
@@ -60,7 +62,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/btn_salvar"
         android:textSize="20sp"
-        android:layout_marginTop="55dp"/>
+        android:layout_marginTop="55dp"
+        android:textColor="@android:color/black" />
     </LinearLayout>
     </ScrollView>
 </LinearLayout>

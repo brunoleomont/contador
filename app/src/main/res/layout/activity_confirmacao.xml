@@ -27,7 +27,8 @@
         android:textSize="30sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAlignment="center"/>
+        android:textAlignment="center"
+        android:textColor="@android:color/black" />
 
     <TextView
         android:text=""
@@ -36,7 +37,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:id="@+id/txt_evento_conf"/>
+        android:id="@+id/txt_evento_conf"
+        android:textColor="@android:color/black"/>
 
     <TextView
         android:text=""
@@ -45,7 +47,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        android:id="@+id/txt_local_conf"/>
+        android:id="@+id/txt_local_conf"
+        android:textColor="@android:color/black"/>
 
     <TextView
         android:textSize="30sp"
@@ -55,7 +58,8 @@
         android:inputType="date"
         android:ems="10"
         android:layout_marginTop="40dp"
-        android:id="@+id/txt_data_conf" />
+        android:id="@+id/txt_data_conf"
+        android:textColor="@android:color/black"/>
 
     <TextView
         android:text="0"
@@ -64,7 +68,8 @@
         android:id="@+id/txtView_contagem"
         android:textAlignment="center"
         android:textSize="30sp"
-        android:layout_marginTop="50dp"/>
+        android:layout_marginTop="50dp"
+        android:textColor="@android:color/black"/>
 
     <Button
         android:hint="@string/btn_contar_novamente"
@@ -72,7 +77,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/btn_contar_novamente"
         android:textSize="20sp"
-        android:layout_marginTop="55dp"/>
+        android:layout_marginTop="55dp"
+        android:textColor="@android:color/black"/>
 
             </LinearLayout>
     </ScrollView>
