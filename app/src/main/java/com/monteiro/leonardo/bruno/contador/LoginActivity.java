@@ -3,6 +3,7 @@ package com.monteiro.leonardo.bruno.contador;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.LoaderManager.LoaderCallbacks;
 import android.content.CursorLoader;
@@ -261,6 +262,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         //mEmailView.setText(user.getUsername());
         mEmailView.setText(user.getEmail());
         Intent contagemActivity = new Intent(this, ContagemActivity.class);
+        contagemActivity.putExtra("email", mEmailView.getText().toString());
         startActivity(contagemActivity);
 
     }

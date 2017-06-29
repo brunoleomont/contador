@@ -45,12 +45,16 @@ public class EnviarActivity extends Activity{
 
     String local;
     String events;
+    public String email;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_enviar);
 
         txt_data = (TextView) findViewById(R.id.edTxtData);
+        Intent intent = getIntent();
+        email = intent.getStringExtra("email");
+        String valor = intent.getStringExtra("valor");
 
         Calendar calendario = Calendar.getInstance();
         int ano = calendario.get(Calendar.YEAR);
@@ -150,9 +154,6 @@ public class EnviarActivity extends Activity{
 
             }
         });
-
-        Intent intent = getIntent();
-        String valor = intent.getStringExtra("valor");
 
         edtTxt_contagem = (TextView) findViewById(R.id.edtTxt_contagem);
         edtTxt_contagem.setText(valor);

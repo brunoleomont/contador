@@ -13,6 +13,8 @@ import android.widget.TextView;
 
 public class ConfirmacaoActivity extends Activity {
 
+    public String email;
+
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_confirmacao);
@@ -22,6 +24,7 @@ public class ConfirmacaoActivity extends Activity {
         String data = intent.getStringExtra("data");
         String evento = intent.getStringExtra("evento");
         String local = intent.getStringExtra("local");
+        email = intent.getStringExtra("email");
 
         TextView txtView_contagem = (TextView) findViewById(R.id.txtView_contagem);
         TextView txtView_data = (TextView) findViewById(R.id.txt_data_conf);
@@ -44,6 +47,7 @@ public class ConfirmacaoActivity extends Activity {
 
     public void recomecar(){
         Intent contagemActivity = new Intent(this, ContagemActivity.class);
+        contagemActivity.putExtra("email", email);
         startActivity(contagemActivity);
     }
 }
