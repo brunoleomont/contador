@@ -14,6 +14,8 @@ import android.widget.TextView;
 public class ConfirmacaoActivity extends Activity {
 
     public String email;
+    public String campus;
+    public String idUsuario;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,19 +25,21 @@ public class ConfirmacaoActivity extends Activity {
         String valor = intent.getStringExtra("valor");
         String data = intent.getStringExtra("data");
         String evento = intent.getStringExtra("evento");
-        String local = intent.getStringExtra("local");
+        //String local = intent.getStringExtra("local");
         email = intent.getStringExtra("email");
+        campus = intent.getStringExtra("campus");
+        idUsuario = intent.getStringExtra("idUsuario");
 
         TextView txtView_contagem = (TextView) findViewById(R.id.txtView_contagem);
         TextView txtView_data = (TextView) findViewById(R.id.txt_data_conf);
         TextView txtView_evento = (TextView) findViewById(R.id.txt_evento_conf);
-        TextView txtView_local = (TextView) findViewById(R.id.txt_local_conf);
+        //TextView txtView_local = (TextView) findViewById(R.id.txt_local_conf);
         Button btn_contar_novamente = (Button) findViewById(R.id.btn_contar_novamente);
 
         txtView_contagem.setText(valor);
         txtView_data.setText(data);
         txtView_evento.setText(evento);
-        txtView_local.setText(local);
+        //txtView_local.setText(local);
 
         btn_contar_novamente.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,6 +52,8 @@ public class ConfirmacaoActivity extends Activity {
     public void recomecar(){
         Intent contagemActivity = new Intent(this, ContagemActivity.class);
         contagemActivity.putExtra("email", email);
+        contagemActivity.putExtra("campus", campus);
+        contagemActivity.putExtra("idUsuario", idUsuario);
         startActivity(contagemActivity);
     }
 }

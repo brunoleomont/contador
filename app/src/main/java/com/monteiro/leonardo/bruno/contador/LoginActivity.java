@@ -3,7 +3,6 @@ package com.monteiro.leonardo.bruno.contador;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.LoaderManager.LoaderCallbacks;
 import android.content.CursorLoader;
@@ -22,6 +21,7 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -70,11 +70,15 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private EditText mPasswordView;
     private View mProgressView;
     private View mLoginFormView;
+    private List<String> obj = new ArrayList<String>();
+    private String campus;
+    private String idUsuario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
 
         // Set up the login form.
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
@@ -261,8 +265,13 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         ParseUser user = ParseUser.getCurrentUser();
         //mEmailView.setText(user.getUsername());
         mEmailView.setText(user.getEmail());
+        campus = user.getNumber("idCampus").toString();
+        idUsuario = user.getNumber("idUser").toString();
+        Log.d("campus ", "Campus" + campus);
         Intent contagemActivity = new Intent(this, ContagemActivity.class);
         contagemActivity.putExtra("email", mEmailView.getText().toString());
+        contagemActivity.putExtra("campus", campus);
+        contagemActivity.putExtra("idUsuario", idUsuario);
         startActivity(contagemActivity);
 
     }

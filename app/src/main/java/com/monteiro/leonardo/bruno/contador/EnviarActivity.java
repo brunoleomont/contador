@@ -46,6 +46,9 @@ public class EnviarActivity extends Activity{
     String local;
     String events;
     public String email;
+    public String campus;
+    public String idUsuario;
+    public String idEvento;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,6 +58,8 @@ public class EnviarActivity extends Activity{
         Intent intent = getIntent();
         email = intent.getStringExtra("email");
         String valor = intent.getStringExtra("valor");
+        campus = intent.getStringExtra("campus");
+        idUsuario = intent.getStringExtra("idUsuario");
 
         Calendar calendario = Calendar.getInstance();
         int ano = calendario.get(Calendar.YEAR);
@@ -63,7 +68,7 @@ public class EnviarActivity extends Activity{
 
         txt_data.setText(dia + "/" + mes + "/" + ano);
 
-        spn1 = (Spinner) findViewById(R.id.spinner_local);
+        //spn1 = (Spinner) findViewById(R.id.spinner_local);
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, listarLugares()){
             @Override
             public boolean isEnabled(int position){
@@ -88,10 +93,10 @@ public class EnviarActivity extends Activity{
         };
         ArrayAdapter<String> spinnerArrayAdapter = arrayAdapter;
         spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
-        spn1.setAdapter(spinnerArrayAdapter);
+        //spn1.setAdapter(spinnerArrayAdapter);
 
         //Método do Spinner para capturar o item selecionado
-        spn1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        /*spn1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
             @Override
             public void onItemSelected(AdapterView<?> parent, View v, int posicao, long id) {
@@ -107,7 +112,7 @@ public class EnviarActivity extends Activity{
             public void onNothingSelected(AdapterView<?> parent) {
 
             }
-        });
+        });*/
 
         spn2 = (Spinner) findViewById(R.id.spinner_evento);
         ArrayAdapter<String> arrayEvento = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, listarEventos()){
@@ -144,6 +149,7 @@ public class EnviarActivity extends Activity{
                 String selectedItemText = (String) parent.getItemAtPosition(posicao);
                 if (posicao > 0) {
                     events = selectedItemText;
+                    getIdEvento();
                     //imprime um Toast na tela com o nome que foi selecionado
                     //Toast.makeText(ExemploSpinner.this, "Nome Selecionado: " + nome, Toast.LENGTH_LONG).show();
                 }
@@ -201,7 +207,7 @@ public class EnviarActivity extends Activity{
     private List<String> listarEventos() {
         if (verificarConexao()) {
             ParseQuery query = ParseQuery.getQuery("Evento");
-            //query.whereEqualTo("eventoNome", "Dan Stemkoski");
+            query.whereEqualTo("idCampus", Integer.parseInt(campus));
             query.findInBackground(new FindCallback<ParseObject>() {
                 public void done(List<ParseObject> eventList, ParseException e) {
                     if (e == null) {
@@ -232,7 +238,9 @@ public class EnviarActivity extends Activity{
             confirmacaoActivity.putExtra("valor", edtTxt_contagem.getText().toString());
             confirmacaoActivity.putExtra("data", txt_data.getText().toString());
             confirmacaoActivity.putExtra("evento", events);
-            confirmacaoActivity.putExtra("local", local);
+            confirmacaoActivity.putExtra("campus", campus);
+            confirmacaoActivity.putExtra("idUsuario", idUsuario);
+            //confirmacaoActivity.putExtra("local", local);
             startActivity(confirmacaoActivity);
     }
 
@@ -240,7 +248,9 @@ public class EnviarActivity extends Activity{
         ParseObject contagem = new ParseObject("Contagem");
         contagem.put("publico", edtTxt_contagem.getText().toString());
         contagem.put("evento", events);
-        contagem.put("local", local);
+        contagem.put("idUser", Integer.parseInt(idUsuario));
+        contagem.put("idEvento", Integer.parseInt(idEvento));
+        //contagem.put("local", local);
         contagem.put("data", txt_data.getText().toString());
         contagem.saveInBackground();
     }
@@ -262,11 +272,29 @@ public class EnviarActivity extends Activity{
         if (events == "Evento" || events == null) {
             Toast.makeText(this, "Selecione um Evento", Toast.LENGTH_SHORT).show();
             return false;
-        } else if (local == "Local" || local == null){
+        /*} else if (local == "Local" || local == null){
             Toast.makeText(this, "Selecione um Local", Toast.LENGTH_SHORT).show();
-            return false;
+            return false;*/
         } else {
             return true;
         }
+    }
+
+    public void getIdEvento(){
+        ParseQuery query = ParseQuery.getQuery("Evento");
+        query.whereEqualTo("eventoNome", events);
+        query.findInBackground(new FindCallback<ParseObject>() {
+            public void done(List<ParseObject> ev, ParseException e) {
+                if (e == null) {
+                    Log.d("ID evento", "Recebido " + ev.toString() );
+                    for (ParseObject eventoObj : ev) {
+                        idEvento = eventoObj.getNumber("idEvento").toString();
+                    }
+                } else {
+                    Log.d("IDevento", "Erro: " + e.getMessage());
+                    Log.d("id evento", idEvento);
+                }
+            }
+        });
     }
 }

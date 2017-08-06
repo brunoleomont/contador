@@ -19,6 +19,8 @@ public class ContagemActivity extends Activity{
     public TextView txtContagem;
     public int contador;
     public String email;
+    public String campus;
+    public String idUsuario;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -27,6 +29,10 @@ public class ContagemActivity extends Activity{
 
         Intent intent = getIntent();
         email = intent.getStringExtra("email");
+        campus = intent.getStringExtra("campus");
+        idUsuario = intent.getStringExtra("idUsuario");
+        Log.d("campus ", "Campus " + campus);
+        Log.d("idUser ", "ID User " + idUsuario);
 
         txtContagem = (TextView) findViewById(R.id.txtView_contagem);
         Button SalvarButton = (Button) findViewById(R.id.btn_salvar);
@@ -50,6 +56,8 @@ public class ContagemActivity extends Activity{
         Intent enviarActivity = new Intent(this, EnviarActivity.class);
         enviarActivity.putExtra("valor", txtContagem.getText().toString());
         enviarActivity.putExtra("email", email);
+        enviarActivity.putExtra("campus", campus);
+        enviarActivity.putExtra("idUsuario", idUsuario);
         startActivity(enviarActivity);
     }
 
